@@ -1,8 +1,8 @@
 pipeline {
 	    agent any
 	
-
-	        // Environment Variables
+	
+	        // Environment Variabless
 	        environment {
 	        MAJOR = '1'
 	        MINOR = '1'
