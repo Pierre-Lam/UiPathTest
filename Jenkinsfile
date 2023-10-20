@@ -52,6 +52,7 @@ pipeline {
 	            steps {
 	                echo "Deploying ${BRANCH_NAME} to orchestrator"
 	                UiPathDeploy (
+			createProcess: true,
 	                packagePath: "Output\\Tests\${env.BUILD_NUMBER}",
 	                orchestratorAddress: "${UIPATH_ORCH_URL}",
 	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
@@ -60,7 +61,7 @@ pipeline {
 	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
 					traceLevel: 'None',
-					entryPointPaths: 'Main.xaml'
+					entryPointPaths: 'Main.xaml',
 	
 
 					)
@@ -117,6 +118,7 @@ pipeline {
 				steps {
 	                echo 'Deploying process to orchestrator...'
 	                UiPathDeploy (
+			createProcess: true,
 	                packagePath: "Output\\${env.BUILD_NUMBER}",
 	                orchestratorAddress: "${UIPATH_ORCH_URL}",
 	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
